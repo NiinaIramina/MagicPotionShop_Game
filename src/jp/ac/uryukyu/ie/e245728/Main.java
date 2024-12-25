@@ -23,6 +23,9 @@ public class Main {
             else if (seen == "ゲーム終了シーン"){
                 break;
             }
+            else if (seen == "倉庫シーン"){
+                seen = garageseen(scan);
+            }
         }
         System.out.println("ゲームを終了します。");
 
@@ -47,14 +50,28 @@ public class Main {
             nextseen = "プレゼントシーン";
         } else if (item_num == 3){ //３の時ブレイクしてwhileから抜ける
             System.out.println("プレゼントタイムを終了しました。");
+            nextseen = "倉庫シーン";
+        }
+
+        //System.out.println("---------------------------");
+        return nextseen;
+    }
+
+    public static String garageseen(Scanner scan){
+        System.out.println("倉庫にしまったらもっと欲しくなりますね。");
+
+        System.out.println("1.もう一回もらいに行く。");
+        System.out.println("2.やめておく。");
+        int choose_num = scan.nextInt();
+        String nextseen = "";
+        if (choose_num == 1){
+            nextseen = "プレゼントシーン";
+        } 
+        else if(choose_num == 2){
             nextseen = "ゲーム終了シーン";
         }
 
         return nextseen;
-    }
-
-    public static void garage(){
-        System.out.println("倉庫にしまいましょう！");
     }
 
 }
